@@ -2,6 +2,17 @@
 
 <h1>danh sách</h1>
 
+<div class="container">
+    <form class="d-flex" role="search">
+      <select name="status" class="form-select" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option value="0">Chưa hoàn thành</option>
+        <option value="1">hoàn thành</option>
+      </select>
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>
+
 <div class="container-fluid">
   <table class="table table-bordered ">
     <thead>
@@ -19,14 +30,14 @@
       <% obj.forEach((obj, index) => { %>
         <tr>
           <th scope="row"><%= index+1 %></th>
-          <td><%= obj.work.name %></td>
+          <td><%= obj.id_work.name %></td>
           <td><%= obj.name %></td>
           <td><%= obj.description %></td>
-          <td><%= obj.status %></td>
+          <td><%= obj.status ==  0 ? 'chưa hoàn thành' : 'hoàn thành' %></td>
           <td><img src="<%= obj.image %>" alt="" width="80", height="80"></td>
           <td>
             <a href="/edit/<%= obj._id %> " class="btn btn-warning">sửa</a>
-            <a href="/delete/<%= obj._id %>" class="btn btn-danger" >xóa</a>
+            <a href="/delete/<%= obj._id %>" onclick="confirm('want you delete this?')" class="btn btn-danger" >xóa</a>
           </td>
         </tr>
       <% }); %>
